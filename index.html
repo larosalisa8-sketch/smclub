@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sam's Club Survey – $750 Gift Card</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --blue-deep: #1a2f6e;
+    --blue-mid: #1f3c8f;
+    --blue-bright: #2952c7;
+    --blue-light: #e8edf8;
+    --blue-pale: #f0f4fc;
+    --gold: #f5a623;
+    --gold-dark: #d4891a;
+    --white: #ffffff;
+    --text-dark: #0f1f4d;
+    --text-mid: #3a4a6b;
+    --text-light: #6b7a99;
+    --border: #d0daf0;
+    --shadow: rgba(26,47,110,0.12);
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f0f4fb;
+    color: var(--text-dark);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--blue-deep);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.3px;
+  }
+  .header-brand span {
+    color: var(--gold);
+  }
+  .header-badge {
+    margin-left: auto;
+    background: var(--gold);
+    color: var(--blue-deep);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(160deg, var(--blue-deep) 0%, var(--blue-mid) 55%, #2448a8 100%);
+    padding: 32px 20px 36px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(245,166,35,0.08);
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(245,166,35,0.18);
+    border: 1px solid rgba(245,166,35,0.4);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .hero-eyebrow::before { content: '★'; font-size: 10px; }
+
+  /* Gift Card Visual */
+  .gift-card {
+    background: linear-gradient(135deg, #1a3496 0%, #0d2070 100%);
+    border-radius: 16px;
+    padding: 22px 24px;
+    max-width: 320px;
+    margin: 0 auto 24px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.1);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .gift-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), #fff8, var(--gold));
+  }
+  .gc-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+  .gc-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .gc-logo-text {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.1;
+  }
+  .gc-logo-text span { color: var(--gold); }
+  .gc-diamond {
+    display: flex;
+    gap: 3px;
+  }
+  .gc-diamond span {
+    display: inline-block;
+    width: 14px; height: 14px;
+    border: 2px solid rgba(255,255,255,0.6);
+    transform: rotate(45deg);
+  }
+  .gc-chip {
+    width: 36px; height: 26px;
+    background: linear-gradient(135deg, #d4a017, #f5d060, #c8920f);
+    border-radius: 5px;
+    position: relative;
+  }
+  .gc-chip::after {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 2px;
+  }
+  .gc-amount {
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: -2px;
+    line-height: 1;
+    text-align: left;
+  }
+  .gc-amount sup {
+    font-size: 24px;
+    font-weight: 700;
+    vertical-align: super;
+    letter-spacing: 0;
+  }
+  .gc-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+  .gc-strips {
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 60px;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.02) 0px,
+      rgba(255,255,255,0.02) 8px,
+      transparent 8px,
+      transparent 16px
+    );
+  }
+
+  .hero-headline {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.25;
+    margin-bottom: 10px;
+    position: relative; z-index: 1;
+  }
+  .hero-headline .amount {
+    color: var(--gold);
+    font-size: 30px;
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+    max-width: 300px;
+    margin: 0 auto 28px;
+    position: relative; z-index: 1;
+  }
+
+  .cta-btn {
+    display: block;
+    background: linear-gradient(135deg, var(--gold) 0%, #e8950f 100%);
+    color: var(--blue-deep);
+    font-size: 17px;
+    font-weight: 800;
+    padding: 17px 28px;
+    border-radius: 14px;
+    text-decoration: none;
+    letter-spacing: 0.2px;
+    box-shadow: 0 6px 24px rgba(245,166,35,0.4), 0 2px 6px rgba(0,0,0,0.2);
+    position: relative; z-index: 1;
+    transition: transform 0.15s, box-shadow 0.15s;
+    max-width: 340px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .cta-btn:active { transform: scale(0.98); }
+  .cta-btn .arrow { margin-left: 8px; font-size: 18px; }
+  .cta-btn .sub-text {
+    display: block;
+    font-size: 11.5px;
+    font-weight: 600;
+    opacity: 0.75;
+    margin-top: 3px;
+    letter-spacing: 0.3px;
+  }
+
+  .trust-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 18px;
+    position: relative; z-index: 1;
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 500;
+  }
+  .trust-item .icon { font-size: 13px; }
+
+  /* ── STEPS ── */
+  .steps-section {
+    background: var(--white);
+    padding: 30px 20px;
+    margin-top: 0;
+  }
+  .section-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: 6px;
+  }
+  .section-sub {
+    font-size: 13.5px;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--blue-pale);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+  }
+  .step-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: var(--blue-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .step-text h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+  .step-text p {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.5;
+  }
+
+  .steps-cta {
+    margin-top: 22px;
+    text-align: center;
+  }
+
+  /* ── SOCIAL PROOF ── */
+  .social-section {
+    background: var(--blue-pale);
+    padding: 28px 20px;
+    border-top: 1px solid var(--border);
+  }
+  .review-count {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    justify-content: center;
+  }
+  .stars { color: var(--gold); font-size: 18px; letter-spacing: 1px; }
+  .review-count span { font-size: 13px; color: var(--text-light); font-weight: 500; }
+
+  .reviews {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 400px;
+    margin: 0 auto 20px;
+  }
+  .review-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .review-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .avatar {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 15px;
+    color: white;
+    flex-shrink: 0;
+  }
+  .av-1 { background: linear-gradient(135deg, #e05b5b, #c0392b); }
+  .av-2 { background: linear-gradient(135deg, #5b8fe0, #2c5fb3); }
+  .av-3 { background: linear-gradient(135deg, #5bc47a, #27a549); }
+  .av-4 { background: linear-gradient(135deg, #e0a45b, #c07820); }
+
+  .review-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-dark);
+  }
+  .review-time {
+    font-size: 11.5px;
+    color: var(--text-light);
+  }
+  .review-stars { color: var(--gold); font-size: 13px; margin-top: 1px; }
+  .review-body {
+    font-size: 13.5px;
+    color: var(--text-mid);
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .review-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .review-like {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--text-light);
+    font-weight: 500;
+  }
+  .verified-badge {
+    margin-left: auto;
+    background: #eafaf0;
+    color: #27a549;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 10px;
+    border: 1px solid #b7e8c7;
+  }
+
+  /* Official reply */
+  .official-reply {
+    background: #eef2fc;
+    border: 1px solid #c5d0f0;
+    border-radius: 10px;
+    padding: 11px 13px;
+    margin-top: 10px;
+    display: flex;
+    gap: 9px;
+    align-items: flex-start;
+  }
+  .official-icon {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--blue-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .official-content {}
+  .official-name {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--blue-deep);
+  }
+  .official-text {
+    font-size: 12.5px;
+    color: var(--text-mid);
+    line-height: 1.45;
+    margin-top: 3px;
+  }
+
+  /* ── BOTTOM CTA ── */
+  .bottom-cta {
+    background: linear-gradient(135deg, var(--blue-deep), #2448a8);
+    padding: 30px 20px;
+    text-align: center;
+  }
+  .bottom-cta h2 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .bottom-cta h2 span { color: var(--gold); }
+  .bottom-cta p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 22px;
+    line-height: 1.5;
+  }
+  .availability {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+  }
+  .avail-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #4cde80;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--blue-deep);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 16px 20px;
+    text-align: center;
+  }
+  .footer p {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.6;
+  }
+  .footer a { color: rgba(255,255,255,0.5); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-logo">
+    <!-- Sam's Club diamond logo (simplified) -->
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="32" height="32" rx="6" fill="#1a2f6e"/>
+      <polygon points="16,4 26,13 22,28 10,28 6,13" fill="none" stroke="#f5a623" stroke-width="2"/>
+      <polygon points="16,9 22,15 20,24 12,24 10,15" fill="#f5a623" opacity="0.3"/>
+    </svg>
+    <span class="header-brand">Sam's Club <span>Survey</span></span>
+  </div>
+  <div class="header-badge">Official</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Member Rewards Program</div>
+
+  <!-- Gift Card Visual -->
+  <div class="gift-card">
+    <div class="gc-strips"></div>
+    <div class="gc-top">
+      <div class="gc-logo">
+        <div>
+          <div class="gc-logo-text">Sam's<br><span>Club</span></div>
+        </div>
+        <div class="gc-diamond">
+          <span></span><span></span>
+        </div>
+      </div>
+      <div class="gc-chip"></div>
+    </div>
+    <div class="gc-amount"><sup>$</sup>750</div>
+    <div class="gc-label">Gift Card</div>
+  </div>
+
+  <h1 class="hero-headline">
+    Claim Your <span class="amount">$750</span><br>Sam's Club Gift Card
+  </h1>
+  <p class="hero-sub">
+    Share your shopping experience at Sam's Club and receive a $750 gift card as our thank-you for your feedback.
+  </p>
+
+  <a href="https://giftclick.org/aff_c?offer_id=2965&aff_id=3471" class="cta-btn">
+    Start Survey Now <span class="arrow">→</span>
+    <span class="sub-text">Takes less than a few minutes</span>
+  </a>
+
+  <div class="trust-row">
+    <div class="trust-item"><span class="icon">🔒</span> Secure</div>
+    <div class="trust-item"><span class="icon">✓</span> Verified</div>
+    <div class="trust-item"><span class="icon">🎁</span> Real Rewards</div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="steps-section">
+  <h2 class="section-title">Simple 3-Step Process</h2>
+  <p class="section-sub">Complete these quick steps to receive your gift card</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-icon">📋</div>
+      <div class="step-text">
+        <h3>Take the Survey</h3>
+        <p>Answer a few quick questions about your Sam's Club shopping experience.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">🎯</div>
+      <div class="step-text">
+        <h3>Complete 4–6 Simple Deals</h3>
+        <p>Includes free trials, app downloads, and Sam's Club shopping surveys. You choose what works for you.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">🎁</div>
+      <div class="step-text">
+        <h3>Get Rewarded</h3>
+        <p>Receive your $750 Sam's Club gift card after completing the survey.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="steps-cta">
+    <a href="https://giftclick.org/aff_c?offer_id=2965&aff_id=3471" class="cta-btn" style="max-width:340px; display:inline-block;">
+      Claim My Gift Card <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="social-section">
+  <h2 class="section-title" style="margin-bottom:8px;">Community Feedback</h2>
+  <div class="review-count">
+    <div class="stars">★★★★★</div>
+    <span>47 members rewarded this week</span>
+  </div>
+
+  <div class="reviews">
+
+    <!-- Review 1 -->
+    <div class="review-card">
+      <div class="review-header">
+        <div class="avatar av-1">T</div>
+        <div>
+          <div class="review-name">Tanya Willows</div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-time">1 week ago</div>
+        </div>
+      </div>
+      <p class="review-body">
+        Stocked up on groceries and household items for the whole month! Never thought it'd be this simple to claim. Absolutely worth it 🛒
+      </p>
+      <div class="review-actions">
+        <div class="review-like">👍 124</div>
+        <div class="review-like">Reply</div>
+        <div class="verified-badge">✓ Verified</div>
+      </div>
+    </div>
+
+    <!-- Review 2 with official reply -->
+    <div class="review-card">
+      <div class="review-header">
+        <div class="avatar av-2">D</div>
+        <div>
+          <div class="review-name">Derek Nolan</div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-time">1 week ago</div>
+        </div>
+      </div>
+      <p class="review-body">
+        Just submitted mine! Can't wait to start saving on every Sam's Club trip 🛍️
+      </p>
+      <div class="review-actions">
+        <div class="review-like">👍 42</div>
+        <div class="review-like">Reply</div>
+      </div>
+      <!-- Official reply -->
+      <div class="official-reply">
+        <div class="official-icon">🏪</div>
+        <div class="official-content">
+          <div class="official-name">Sam's Club Survey Team</div>
+          <div class="official-text">Awesome, Derek! Your gift card email should arrive within 24–48 hours. Enjoy your next haul!</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Review 3 -->
+    <div class="review-card">
+      <div class="review-header">
+        <div class="avatar av-3">N</div>
+        <div>
+          <div class="review-name">Nina Castillo</div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-time">1 week ago</div>
+        </div>
+      </div>
+      <p class="review-body">
+        Genuinely the quickest survey I've ever done. Already recommended it to my whole family!
+      </p>
+      <div class="review-actions">
+        <div class="review-like">👍 15</div>
+        <div class="review-like">Reply</div>
+        <div class="verified-badge">✓ Verified</div>
+      </div>
+    </div>
+
+    <!-- Review 4 -->
+    <div class="review-card">
+      <div class="review-header">
+        <div class="avatar av-4">M</div>
+        <div>
+          <div class="review-name">Marcus Rivera</div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-time">2 weeks ago</div>
+        </div>
+      </div>
+      <p class="review-body">
+        Used the card on our bulk shopping run. Saved a ton. The survey literally took me under 5 minutes. Highly recommend 💪
+      </p>
+      <div class="review-actions">
+        <div class="review-like">👍 88</div>
+        <div class="review-like">Reply</div>
+        <div class="verified-badge">✓ Verified</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="bottom-cta">
+  <h2>Ready for Your <span>$750</span> Card?</h2>
+  <p>Join thousands of Sam's Club members who've already claimed their rewards.</p>
+  <a href="https://giftclick.org/aff_c?offer_id=2965&aff_id=3471" class="cta-btn" style="max-width:340px; margin:0 auto; display:block; font-size:16px;">
+    Start Survey Now <span class="arrow">→</span>
+    <span class="sub-text">Takes less than a few minutes</span>
+  </a>
+  <div class="availability">
+    <div class="avail-dot"></div>
+    Limited spots available today
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2026 Sam's Club Survey. All rights reserved.<br>
+  This survey is for market research purposes. Gift card delivery is subject to deal completion.<br>
+  <a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a></p>
+</footer>
+
+</body>
+</html>
